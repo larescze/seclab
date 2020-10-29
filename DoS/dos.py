@@ -1,2 +1,2 @@
-# Print string
+# Print DoS attack
 print("DoS attack")
