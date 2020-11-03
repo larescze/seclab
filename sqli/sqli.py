@@ -22,4 +22,3 @@ if("logout" in data):
     print('User is now logged in')
 else:
     print('Unable to login')
-
