@@ -27,9 +27,9 @@ def get_form_details(form):
         method = form.attrs.get("method", "get")
         # get all the input attributes and values
         inputs = []
-        for input_tag in form.find_all(["input", "button"]):
-            input_type = input_tag.attrs.get("type", "text")
-            input_name = input_tag.attrs.get("name")
+        for input in form.find_all(["input", "button"]):
+            input_type = input.attrs.get("type", "text")
+            input_name = input.attrs.get("name")
             inputs.append({"type": input_type, "name": input_name})
         # add all attributes and values to array
         details["action"] = action
