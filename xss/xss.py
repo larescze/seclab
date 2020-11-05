@@ -43,7 +43,3 @@ if __name__ == "__main__":
     url = "http://apache1.willilazarov.cz/"
     forms = get_forms(url)
     print(get_form_details(forms))
-
-    """
-        This function extracts all possible useful information about an HTML `form`
-        """
