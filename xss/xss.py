@@ -116,6 +116,7 @@ def run_xss(target_url):
     """
     try:
         with open("xss.txt", "r", encoding="utf-8") as script_file:
+            beacon = '<span style="display: none" id="b1865488"></span>'
             xss_script = script_file.read()
             is_success = False
             forms = get_forms(target_url)
@@ -126,7 +127,7 @@ def run_xss(target_url):
                 # Submit form and save HTTP response
                 content = submit_form(form_attributes, target_url, xss_script).content.decode()
                 # Check if XSS script is injected in the website's source code
-                if xss_script in content:
+                if beacon in content:
                     is_success = True
             if is_success:
                 print(f"XSS was successful")
