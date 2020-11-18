@@ -1,0 +1,23 @@
+$white: #ffff;
+$vut: #e4002b;
+$vutDark: #cf0227;
+$fekt: #0060aa;
+$grey: #f1f1f1;
+
+$md: 768px;
+$sm: 576px;
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+    img {
+        width: 350px;
+    }
+}
+
+.result-item {
+    padding-top: 1rem;
+    border-top: 1px solid #ced4da;
+}

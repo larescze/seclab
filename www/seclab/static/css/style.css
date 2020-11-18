@@ -1,0 +1,19 @@
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+
+.logo img {
+  width: 350px;
+}
+
+.result-item {
+  padding-top: 1rem;
+  border-top: 1px solid #ced4da;
+}
+/*# sourceMappingURL=style.css.map */
