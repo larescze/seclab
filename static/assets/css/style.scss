@@ -186,3 +186,11 @@ footer {
     background-color: #222222;
     text-align: center;
 }
+
+#helpModal {
+    ol {
+        margin-top: 1rem;
+        list-style-type: decimal;
+        list-style-position: inside;
+    }
+}

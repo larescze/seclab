@@ -72,7 +72,20 @@
             </button>
           </div>
           <div class="modal-body">
-            <p>Modal body text goes here.</p>
+            <p>
+              Shodan (Sentient Hyper-Optimized Data Access Network) is often
+              referred to as the world’s first search engine for
+              Internet-connected devices. In a nutshell, the algorithm Shodan
+              uses runs like this:
+            </p>
+            <ol>
+              <li>Generate a random IPv4 address</li>
+              <li>Collect a real-time list of connected devices online</li>
+              <li>Query a supported port</li>
+              <li>Check the IPv4</li>
+              <li>address on the port. Grab a service banner</li>
+              <li>Repeat</li>
+            </ol>
           </div>
           <div class="modal-footer"></div>
         </div>
@@ -292,7 +305,7 @@
         </div>
         {% endif %}
         <div class="found">Top results:</div>
-        <div class="results">
+        <div class="results mb-5">
           {% for result in results.matches %}
           <div class="result-item">
             <ul>
