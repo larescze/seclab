@@ -87,20 +87,26 @@ strong {
 }
 
 .filter {
+    display: flex;
     margin-top: 2rem;
+    gap: 1rem;
 
     .form-group {
         display: flex;
         margin-top: 1rem;
         margin-bottom: 0;
+    }
 
-        /*
-        @media (max-width: $lg) {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: .5rem;
-        }
-        */
+    .checkboxes {
+        margin-top: 1.5rem;
+    }
+
+    .chart-select {
+        min-width: 160px;
+    }
+
+    .results-limit {
+        min-width: 180px;
     }
 
     .form-check {
@@ -171,7 +177,16 @@ strong {
 
 .search-results {
     margin-bottom: 2rem;
-    min-height: 174px;
+    min-height: 158px;
+}
+
+.pagination {
+    display: flex;
+    gap: .5rem;
+
+    button {
+        width: 100px;
+    }
 }
 
 footer {

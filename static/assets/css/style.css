@@ -218,7 +218,11 @@ strong {
 }
 
 .filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-top: 2rem;
+  gap: 1rem;
 }
 
 .filter .form-group {
@@ -227,13 +231,18 @@ strong {
   display: flex;
   margin-top: 1rem;
   margin-bottom: 0;
-  /*
-        @media (max-width: $lg) {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: .5rem;
-        }
-        */
+}
+
+.filter .checkboxes {
+  margin-top: 1.5rem;
+}
+
+.filter .chart-select {
+  min-width: 160px;
+}
+
+.filter .results-limit {
+  min-width: 180px;
 }
 
 .filter .form-check {
@@ -315,7 +324,18 @@ strong {
 
 .search-results {
   margin-bottom: 2rem;
-  min-height: 174px;
+  min-height: 158px;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: .5rem;
+}
+
+.pagination button {
+  width: 100px;
 }
 
 footer {
