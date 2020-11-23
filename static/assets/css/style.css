@@ -327,17 +327,6 @@ strong {
   min-height: 158px;
 }
 
-.pagination {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: .5rem;
-}
-
-.pagination button {
-  width: 100px;
-}
-
 footer {
   padding: 3rem 0;
   color: #ffff;

@@ -313,16 +313,7 @@
           </div>
           {% endfor %}
         </div>
-        {% if results.total > limit %}
-        <div class="pagination mt-4">
-          {% if page > 1 %}
-          <button class="btn btn-primary" type="button" id="previous">
-            Previous
-          </button>
-          {% endif %}
-          <button class="btn btn-primary" type="button" id="next">Next</button>
-        </div>
-        {% endif %} {% else %}
+        {% else %}
         <div class="found">
           Welcome to SecLab. Type something and explore the IoT!
         </div>

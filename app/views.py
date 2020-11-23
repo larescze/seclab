@@ -10,7 +10,6 @@ def index(request):
     search_results = ""
     facets = []
     chart = ""
-    page = 1
     limit = 18
     limit_val = ""
     if request.method == 'POST':
@@ -19,11 +18,10 @@ def index(request):
             query = form.cleaned_data['query']
             facets = request.POST.getlist('facet')
             chart = request.POST['chart']
-            page = int(request.POST['page'])
             if request.POST['limit']:
                 limit = int(request.POST['limit'])
                 limit_val = limit
-            search_results = vulnscan.search(query, facets, page, limit)
+            search_results = vulnscan.search(query, facets, limit)
     else:
         form = SearchForm()
     return render(
@@ -38,6 +36,5 @@ def index(request):
             'limit': limit,
             'limit_val': limit_val,
             'chart': chart,
-            'page': page
         }
     )
