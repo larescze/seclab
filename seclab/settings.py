@@ -1,7 +1,6 @@
 """
-Django settings for www project.
+Django settings for seclab project.
 """
-import django_heroku
 import os
 from pathlib import Path
 
@@ -42,12 +41,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'www.urls'
+ROOT_URLCONF = 'seclab.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'seclab/templates'],
+        'DIRS': [BASE_DIR / 'static/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -60,7 +59,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'www.wsgi.application'
+WSGI_APPLICATION = 'seclab.wsgi.application'
 
 
 # Database
@@ -111,8 +110,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'seclab/static'),
-]
 
-django_heroku.settings(locals())
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/assets'),
+]
