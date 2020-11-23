@@ -165,9 +165,14 @@ strong {
   font-weight: 600;
 }
 
+.navbar {
+  font-family: 'Asap', sans-serif;
+  font-weight: 600;
+}
+
 .navbar-brand {
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
   color: #008ace !important;
 }
 
@@ -175,14 +180,35 @@ strong {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 0 auto;
+  margin: 1rem auto 2rem auto;
+  font-family: 'Asap', sans-serif;
+  gap: 5px;
 }
 
 .logo img {
-  width: 250px;
+  width: 170px;
+}
+
+.logo h1 {
+  font-size: 38px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #008ace;
+}
+
+.logo h2 {
+  font-size: 30px;
+  font-weight: 700;
 }
 
 .search {
@@ -324,7 +350,7 @@ strong {
 
 .search-results {
   margin-bottom: 2rem;
-  min-height: 158px;
+  min-height: 128px;
 }
 
 footer {
