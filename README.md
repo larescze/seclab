@@ -19,6 +19,10 @@
 </li>
 </ul>
 
+<h2>Shodan</h2>
+<p>Shodan is search engine for Internet-connected devices (webcams, routers, servers, etc.). Shodan provides banners which are information about device (IP address, software, version, server, serial number, location, vulnerabilities, etc.) through the REST API.</p>
+<h4>REST API</h4>
+<p>The REST API provides methods to search Shodan, look up hosts, get summary information on queries, get information about number of results, narrow search results by filters, search for devices with default passwords, look up devices vulnerable to certain exploits or get port numbers that the crawlers are looking for.</p>
 <h2>Exploits</h2>
 <h3>Directory Traversal</h3>
 <p>Directory traversal is a type of HTTP exploit that allows attackers to gain unauthorized access to restricted directories and files outside of root directory. An attacker may manipulate a URL with special characters “../” to bypass security filters.</p>
