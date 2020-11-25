@@ -1,7 +1,7 @@
 <h1>BPC-AKR: Web security vulnerabilities</h1>
 
 <p>A website for searching web servers with a type of vulnerability and exploits for testing these vulnerabilities.</p>
-<p>Maine goal of this project is vulnerability visualization for Apache servers to specific exploits.</p>
+<p>Main goal of this project is vulnerability visualization for Apache servers to specific exploits.</p>
 <h2>Project structure</h2>
 <ul>
 <li>app - web app backend
