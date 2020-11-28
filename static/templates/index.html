@@ -1,72 +1,133 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="msapplication-TileColor" content="#2d89ef" />
-    <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
-    <meta name="theme-color" content="#ffffff" />
-    <title>{{title}}</title>
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="{% static 'img/favicon/apple-touch-icon.png' %}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="{% static 'img/favicon/favicon-32x32.png' %}"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="{% static 'img/favicon/favicon-16x16.png' %}"
-    />
-    <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}" />
-    <link
-      rel="mask-icon"
-      href="{% static 'img/favicon/safari-pinned-tab.svg' %}"
-      color="#5bbad5"
-    />
-    <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Asap:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css"
-      integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w=="
-      crossorigin="anonymous"
-    />
-    <link
-      href="{% static 'css/style.min.css' %}"
-      rel="stylesheet"
-      type="text/css"
-    />
-  </head>
-  <body>
+{% extends 'includes/base.html' %} {% load static %} {% block content %}
+<div class="search-gif">
+  <img src="{% static 'img/loading.gif' %}" alt="Searching" id="searchGif" />
+</div>
+<div class="search">
+  <div class="container">
+    <form action="/" method="post" id="searchForm">
+      {% csrf_token %}
+      <div class="input-group search-input">
+        {{ form.query }}
+        <div class="input-group-append">
+          <button class="input-group-text" type="submit" id="searchBtn">
+            <i class="fas fa-search" id="searchIcon"></i>
+          </button>
+        </div>
+      </div>
+      <input type="hidden" name="page" id="page" value="{{page}}" />
+      <div class="filter">
+        <div class="flex-item">
+          <strong>Summary filter:</strong>
+          <div class="form-group checkboxes">
+            <div class="form-check {% if 'port' in facets %}checked{% endif %}">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="port"
+                value="port"
+              />
+              <label class="form-check-label" for="port">Port</label>
+            </div>
+            <div
+              class="form-check {% if 'domain' in facets %}checked{% endif %}"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="domain"
+                value="domain"
+              />
+              <label class="form-check-label" for="domain">Domain</label>
+            </div>
+            <div
+              class="form-check {% if 'product' in facets %}checked{% endif %}"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="product"
+                value="product"
+              />
+              <label class="form-check-label" for="product">Product</label>
+            </div>
+            <div
+              class="form-check {% if 'country' in facets %}checked{% endif %}"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="country"
+                value="country"
+              />
+              <label class="form-check-label" for="country">Country</label>
+            </div>
+          </div>
+        </div>
+        <div class="flex-item">
+          <strong>Chart settings:</strong>
+          <div class="form-group">
+            <select class="form-control chart-select" name="chart" id="chart">
+              <option
+                value="bar"
+                class="opt {% if chart == 'bar' %}selected{% endif %}"
+              >
+                Bar (default)
+              </option>
+              <option
+                value="pie"
+                class="opt {% if chart == 'pie' %}selected{% endif %}"
+              >
+                Pie
+              </option>
+              <option
+                value="doughnut"
+                class="opt {% if chart == 'doughnut' %}selected{% endif %}"
+              >
+                Doughnut
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="flex-item">
+          <strong>Results per page:</strong>
+          <div class="form-group">
+            <input
+              class="form-control results-limit"
+              type="number"
+              name="limit"
+              id="limit"
+              min="1"
+              max="100"
+              placeholder="18 (default)"
+              value="{% if limit > 0 %}{{limit_val}}{% endif %}"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="search-results">
+  <div class="container">
+    {% if results.total > 0 %}
+    <div class="found">Results found: {{results.total}}</div>
+    {% if results.facets %}
     <div
       class="modal fade"
-      id="helpModal"
+      id="chartModal"
       tabindex="-1"
       role="dialog"
-      aria-labelledby="helpModal"
+      aria-labelledby="chart}Modal"
       aria-hidden="true"
     >
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Help</h5>
+            <h5 class="modal-title" id="chartTitle"></h5>
             <button
               type="button"
               class="close"
@@ -77,300 +138,64 @@
             </button>
           </div>
           <div class="modal-body">
-            <p>
-              Shodan (Sentient Hyper-Optimized Data Access Network) is often
-              referred to as the world’s first search engine for
-              Internet-connected devices. In a nutshell, the algorithm Shodan
-              uses runs like this:
-            </p>
-            <ol>
-              <li>Generate a random IPv4 address</li>
-              <li>Collect a real-time list of connected devices online</li>
-              <li>Query a supported port</li>
-              <li>Check the IPv4</li>
-              <li>address on the port. Grab a service banner</li>
-              <li>Repeat</li>
-            </ol>
+            <span class="d-none" id="chartType">{{chart}}</span>
+            <canvas id="summaryChart"></canvas>
           </div>
-          <div class="modal-footer"></div>
+          <div class="modal-footer">Data source: Shodan</div>
         </div>
       </div>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="/">Seclab</a>
+    <div class="results summary">
+      {% for key,value in results.facets.items %}
+      <div class="result-item">
+        <ul class="chart-data">
+          <li class="host">TOP 5 - {{key}}</li>
+          {% for summary in value %}
+          <li>
+            <span class="chart-label">{{summary.value}}</span>:
+            <span class="chart-value">{{summary.count}}</span>
+          </li>
+          {% endfor %}
+        </ul>
         <button
-          class="navbar-toggler"
           type="button"
-          data-toggle="collapse"
-          data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          class="btn btn-primary btn-chart"
+          data-toggle="modal"
+          data-target="#chartModal"
         >
-          <span class="navbar-toggler-icon"></span>
+          View chart
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="/">Home{{page}}</a>
-            <a class="nav-item nav-link" href="#">Exploits</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="found">Top results:</div>
+    <div class="results mb-5">
+      {% for result in results.matches %}
+      <div class="result-item">
+        <ul>
+          <li class="host">
             <a
-              class="nav-item nav-link"
-              href="#"
-              data-toggle="modal"
-              data-target="#helpModal"
+              href="https://www.shodan.io/host/{{result.ip_str}}"
+              target="_blank"
+              rel="noreferrer"
             >
-              Help
+              {{result.ip_str}}
             </a>
-          </div>
-        </div>
+          </li>
+          <li>Port: {{result.port}}</li>
+          <li>ISP: {{result.isp}}</li>
+          <li>Country: {{result.location.country_name}}</li>
+          <li>Location: {{result.location.city}}</li>
+        </ul>
       </div>
-    </nav>
-    <div class="logo">
-      <img src="{% static 'img/seclab.png' %}" alt="Seclab" />
-      <h1>Seclab</h1>
-      <h2>Security Laboratory</h2>
+      {% endfor %}
     </div>
-    <div class="search-gif">
-      <img
-        src="{% static 'img/loading.gif' %}"
-        alt="Searching"
-        id="searchGif"
-      />
+    {% else %}
+    <div class="found">
+      Welcome to SecLab. Type something and explore the IoT!
     </div>
-    <div class="search">
-      <div class="container">
-        <form action="/" method="post" id="searchForm">
-          {% csrf_token %}
-          <div class="input-group search-input">
-            {{ form.query }}
-            <div class="input-group-append">
-              <button class="input-group-text" type="submit" id="searchBtn">
-                <i class="fas fa-search" id="searchIcon"></i>
-              </button>
-            </div>
-          </div>
-          <input type="hidden" name="page" id="page" value="{{page}}" />
-          <div class="filter">
-            <div class="flex-item">
-              <strong>Summary filter:</strong>
-              <div class="form-group checkboxes">
-                <div
-                  class="form-check {% if 'port' in facets %}checked{% endif %}"
-                >
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="facet"
-                    id="port"
-                    value="port"
-                  />
-                  <label class="form-check-label" for="port">Port</label>
-                </div>
-                <div
-                  class="form-check {% if 'domain' in facets %}checked{% endif %}"
-                >
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="facet"
-                    id="domain"
-                    value="domain"
-                  />
-                  <label class="form-check-label" for="domain">Domain</label>
-                </div>
-                <div
-                  class="form-check {% if 'product' in facets %}checked{% endif %}"
-                >
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="facet"
-                    id="product"
-                    value="product"
-                  />
-                  <label class="form-check-label" for="product">Product</label>
-                </div>
-                <div
-                  class="form-check {% if 'country' in facets %}checked{% endif %}"
-                >
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="facet"
-                    id="country"
-                    value="country"
-                  />
-                  <label class="form-check-label" for="country">Country</label>
-                </div>
-              </div>
-            </div>
-            <div class="flex-item">
-              <strong>Chart settings:</strong>
-              <div class="form-group">
-                <select
-                  class="form-control chart-select"
-                  name="chart"
-                  id="chart"
-                >
-                  <option
-                    value="bar"
-                    class="opt {% if chart == 'bar' %}selected{% endif %}"
-                  >
-                    Bar (default)
-                  </option>
-                  <option
-                    value="pie"
-                    class="opt {% if chart == 'pie' %}selected{% endif %}"
-                  >
-                    Pie
-                  </option>
-                  <option
-                    value="doughnut"
-                    class="opt {% if chart == 'doughnut' %}selected{% endif %}"
-                  >
-                    Doughnut
-                  </option>
-                </select>
-              </div>
-            </div>
-            <div class="flex-item">
-              <strong>Results per page:</strong>
-              <div class="form-group">
-                <input
-                  class="form-control results-limit"
-                  type="number"
-                  name="limit"
-                  id="limit"
-                  min="1"
-                  max="100"
-                  placeholder="18 (default)"
-                  value="{% if limit > 0 %}{{limit_val}}{% endif %}"
-                />
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-    <div class="search-results">
-      <div class="container">
-        {% if results.total > 0 %}
-        <div class="found">Results found: {{results.total}}</div>
-        {% if results.facets %}
-        <div
-          class="modal fade"
-          id="chartModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="chart}Modal"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="chartTitle"></h5>
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <span class="d-none" id="chartType">{{chart}}</span>
-                <canvas id="summaryChart"></canvas>
-              </div>
-              <div class="modal-footer">Data source: Shodan</div>
-            </div>
-          </div>
-        </div>
-        <div class="results summary">
-          {% for key,value in results.facets.items %}
-          <div class="result-item">
-            <ul class="chart-data">
-              <li class="host">TOP 5 - {{key}}</li>
-              {% for summary in value %}
-              <li>
-                <span class="chart-label">{{summary.value}}</span>:
-                <span class="chart-value">{{summary.count}}</span>
-              </li>
-              {% endfor %}
-            </ul>
-            <button
-              type="button"
-              class="btn btn-primary btn-chart"
-              data-toggle="modal"
-              data-target="#chartModal"
-            >
-              View chart
-            </button>
-          </div>
-          {% endfor %}
-        </div>
-        {% endif %}
-        <div class="found">Top results:</div>
-        <div class="results mb-5">
-          {% for result in results.matches %}
-          <div class="result-item">
-            <ul>
-              <li class="host">
-                <a
-                  href="https://www.shodan.io/host/{{result.ip_str}}"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {{result.ip_str}}
-                </a>
-              </li>
-              <li>Port: {{result.port}}</li>
-              <li>ISP: {{result.isp}}</li>
-              <li>Country: {{result.location.country_name}}</li>
-              <li>Location: {{result.location.city}}</li>
-            </ul>
-          </div>
-          {% endfor %}
-        </div>
-        {% else %}
-        <div class="found">
-          Welcome to SecLab. Type something and explore the IoT!
-        </div>
-        {% endif %}
-      </div>
-    </div>
-    <footer>
-      Code &amp; Design by
-      <a href="https://www.willilazarov.cz" target="_blank" rel="noreferrer">
-        Willi Lazarov
-      </a>
-    </footer>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
-      integrity="sha512-F5QTlBqZlvuBEs9LQPqc1iZv2UMxcVXezbHzomzS6Df4MZMClge/8+gXrKw2fl5ysdk4rWjR0vKS7NNkfymaBQ=="
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
-      integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw=="
-      crossorigin="anonymous"
-    ></script>
-    <script src="{% static 'js/main.js' %}"></script>
-  </body>
-</html>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

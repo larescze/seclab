@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="msapplication-TileColor" content="#2d89ef" />
+    <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+    <title>{{title}}</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'img/favicon/apple-touch-icon.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'img/favicon/favicon-32x32.png' %}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'img/favicon/favicon-16x16.png' %}"
+    />
+    <link rel="manifest" href="{% static 'img/favicon/site.webmanifest' %}" />
+    <link
+      rel="mask-icon"
+      href="{% static 'img/favicon/safari-pinned-tab.svg' %}"
+      color="#5bbad5"
+    />
+    <link rel="shortcut icon" href="{% static 'img/favicon/favicon.ico' %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Asap:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css"
+      integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w=="
+      crossorigin="anonymous"
+    />
+    <link
+      href="{% static 'css/style.min.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
+  <body>
+    <div
+      class="modal fade"
+      id="helpModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="helpModal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Help</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Shodan (Sentient Hyper-Optimized Data Access Network) is often
+              referred to as the world’s first search engine for
+              Internet-connected devices. In a nutshell, the algorithm Shodan
+              uses runs like this:
+            </p>
+            <ol>
+              <li>Generate a random IPv4 address</li>
+              <li>Collect a real-time list of connected devices online</li>
+              <li>Query a supported port</li>
+              <li>Check the IPv4</li>
+              <li>address on the port. Grab a service banner</li>
+              <li>Repeat</li>
+            </ol>
+          </div>
+          <div class="modal-footer"></div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="/">Seclab</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link active" href="/">Home{{page}}</a>
+            <a class="nav-item nav-link" href="/exploits/">Exploits</a>
+            <a
+              class="nav-item nav-link"
+              href="#"
+              data-toggle="modal"
+              data-target="#helpModal"
+            >
+              Help
+            </a>
+            <a class="nav-item nav-link" href="/admin/">Login</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div class="logo">
+      <img src="{% static 'img/seclab.png' %}" alt="Seclab" />
+      <h1>Seclab</h1>
+      <h2>Security Laboratory</h2>
+    </div>
+    <main>{% block content %} {% endblock %}</main>
+    <footer>
+      Code &amp; Design by
+      <a href="https://www.willilazarov.cz" target="_blank" rel="noreferrer">
+        Willi Lazarov
+      </a>
+    </footer>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js"
+      integrity="sha512-F5QTlBqZlvuBEs9LQPqc1iZv2UMxcVXezbHzomzS6Df4MZMClge/8+gXrKw2fl5ysdk4rWjR0vKS7NNkfymaBQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"
+      integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw=="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
