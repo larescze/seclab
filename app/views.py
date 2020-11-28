@@ -1,4 +1,4 @@
-from .exploits import vulnscan
+from .exploits import vulnscan, xss
 from django.shortcuts import render
 
 from .forms import SearchForm
@@ -38,3 +38,16 @@ def index(request):
             'chart': chart,
         }
     )
+
+
+def exploits(request):
+    title = "Exploits"
+    response = ""
+    selected = ""
+    if request.method == 'POST':
+        if request.POST['xss']:
+            selected = "xss"
+            url = request.POST['url']
+            attack_type = request.POST['attack_type']
+            response = xss.launch(url, attack_type)
+    return render(request, 'exploits.html', {'title': title, 'selected': selected, 'response': response})
