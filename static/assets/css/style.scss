@@ -248,7 +248,6 @@ strong {
 
 .attack {
     background-color: #f1f4f8;
-    padding: 2rem 0;
 
     .form-control,
     .input-group-prepend,
@@ -262,7 +261,13 @@ strong {
     }
 }
 
+
+.exploit-form {
+    padding: 2rem 0;
+}
+
 .response {
+    margin-top: 1rem;
     padding: 2rem;
     box-shadow: $boxShadow;
     background-color: $white;
@@ -278,6 +283,27 @@ strong {
 
     p {
         margin: 15px 0;
+    }
+
+    ol {
+        margin: 15px 0;
+        list-style-type: decimal;
+        list-style-position: inside;
+
+        ul {
+            li {
+                padding-left: 1rem;
+            }
+        }
+    }
+
+    ul {
+        list-style-type: circle;
+        list-style-position: inside;
+    }
+
+    li {
+        line-height: 1.25em;
     }
 
     .details {

@@ -408,7 +408,6 @@ strong {
 
 .attack {
   background-color: #f1f4f8;
-  padding: 2rem 0;
 }
 
 .attack .form-control,
@@ -423,7 +422,12 @@ strong {
   border: 0;
 }
 
+.exploit-form {
+  padding: 2rem 0;
+}
+
 .response {
+  margin-top: 1rem;
   padding: 2rem;
   -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -441,6 +445,25 @@ strong {
 
 .response p {
   margin: 15px 0;
+}
+
+.response ol {
+  margin: 15px 0;
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+
+.response ol ul li {
+  padding-left: 1rem;
+}
+
+.response ul {
+  list-style-type: circle;
+  list-style-position: inside;
+}
+
+.response li {
+  line-height: 1.25em;
 }
 
 .response .details {
