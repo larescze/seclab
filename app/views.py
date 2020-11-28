@@ -45,7 +45,9 @@ def exploits(request):
     response = ""
     selected = ""
     if request.method == 'POST':
-        if request.POST['xss']:
+        if request.POST.get('select-xss'):
+            selected = "xss"
+        if request.POST.get('xss'):
             selected = "xss"
             url = request.POST['url']
             attack_type = request.POST['attack_type']
