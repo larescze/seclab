@@ -353,6 +353,104 @@ strong {
   min-height: 128px;
 }
 
+.exploits-grid {
+  margin: 4rem 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.exploits-grid-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1.5rem 2rem;
+  -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.exploits-grid-item h3 {
+  margin: 15px 0;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.exploits-grid-item p {
+  text-align: justify;
+  line-height: 1.25em;
+  padding-bottom: 15px;
+}
+
+.exploits-grid-item button {
+  display: block;
+  margin: auto auto 0 auto;
+}
+
+.exploits-grid-item .icon {
+  font-size: 4em;
+  text-align: center;
+}
+
+.grid-selected {
+  background-color: #28a745;
+  color: #ffff;
+}
+
+.grid-selected button {
+  display: none;
+}
+
+.attack {
+  background-color: #f1f4f8;
+  padding: 2rem 0;
+}
+
+.attack .form-control,
+.attack .input-group-prepend,
+.attack .launch {
+  border: 0;
+  -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.attack .input-group-text {
+  border: 0;
+}
+
+.response {
+  padding: 2rem;
+  -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  background-color: #ffff;
+}
+
+.response h3 {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.response h4 {
+  margin-bottom: 10px;
+}
+
+.response p {
+  margin: 15px 0;
+}
+
+.response .details {
+  margin-top: 1rem;
+}
+
+.response .strong {
+  font-weight: 600;
+}
+
 footer {
   padding: 3rem 0;
   color: #ffff;

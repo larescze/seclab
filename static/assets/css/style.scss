@@ -201,6 +201,94 @@ strong {
     min-height: 128px;
 }
 
+.exploits-grid {
+    margin: 4rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.exploits-grid-item {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    box-shadow: $boxShadow;
+
+    h3 {
+        margin: 15px 0;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    p {
+        text-align: justify;
+        line-height: 1.25em;
+        padding-bottom: 15px;
+    }
+
+    button {
+        display: block;
+        margin: auto auto 0 auto;
+    }
+
+    .icon {
+        font-size: 4em;
+        text-align: center;
+    }
+}
+
+.grid-selected {
+    background-color: #28a745;
+    color: $white;
+
+    button {
+        display: none;
+    }
+}
+
+.attack {
+    background-color: #f1f4f8;
+    padding: 2rem 0;
+
+    .form-control,
+    .input-group-prepend,
+    .launch {
+        border: 0;
+        box-shadow: $boxShadow;
+    }
+
+    .input-group-text {
+        border: 0;
+    }
+}
+
+.response {
+    padding: 2rem;
+    box-shadow: $boxShadow;
+    background-color: $white;
+
+    h3 {
+        font-size: 1.2em;
+        font-weight: 600;
+    }
+
+    h4 {
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin: 15px 0;
+    }
+
+    .details {
+        margin-top: 1rem;
+    }
+
+    .strong {
+        font-weight: 600;
+    }
+}
+
 footer {
     padding: 3rem 0;
     color: $white;
