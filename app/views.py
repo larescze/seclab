@@ -19,6 +19,7 @@ def index(request):
         if form.is_valid():
             query = form.cleaned_data['query']
             facets = request.POST.getlist('facet')
+            print(facets)
             chart = request.POST['chart']
             if request.POST['limit']:
                 limit = int(request.POST['limit'])
