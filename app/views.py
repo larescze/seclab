@@ -1,6 +1,6 @@
 from django.http import HttpResponseRedirect
 
-from .exploits import vulnscan, xss
+from .exploits import vulnscan, xss, sqli
 from django.shortcuts import render
 
 from .forms import SearchForm
@@ -52,6 +52,12 @@ def exploits(request):
                 selected = "xss"
             if request.POST.get('select-sqli'):
                 selected = "sqli"
+            if request.POST.get('sqli'):
+                selected = "sqli"
+                url = request.POST['url']
+                attack_type = request.POST['attack_type']
+                custom_code = request.POST['custom_code']
+                response = sqli.launch(url, attack_type, custom_code)
             if request.POST.get('xss'):
                 selected = "xss"
                 url = request.POST['url']
