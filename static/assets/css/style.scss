@@ -91,6 +91,10 @@ strong {
     input {
         padding: 25px 10px;
     }
+
+    &:focus {
+        box-shadow: $boxShadow !important;
+    }
 }
 
 #searchBtn {
@@ -165,6 +169,10 @@ strong {
     padding: 1rem;
     box-shadow: $boxShadow;
 
+    &:focus {
+        box-shadow: $boxShadow !important;
+    }
+
     ul {
         list-style-type: none;
     }
@@ -214,6 +222,10 @@ strong {
     padding: 1.5rem 2rem;
     box-shadow: $boxShadow;
 
+    &:focus {
+        box-shadow: $boxShadow !important;
+    }
+
     h3 {
         margin: 15px 0;
         font-size: 1.5em;
@@ -254,6 +266,10 @@ strong {
     .launch {
         border: 0;
         box-shadow: $boxShadow;
+
+        &:focus {
+            box-shadow: $boxShadow !important;
+        }
     }
 
     .input-group-text {
@@ -271,6 +287,10 @@ strong {
     padding: 2rem;
     box-shadow: $boxShadow;
     background-color: $white;
+
+    &:focus {
+        box-shadow: $boxShadow !important;
+    }
 
     h3 {
         font-size: 1.2em;
@@ -308,6 +328,10 @@ strong {
 
     .details {
         margin-top: 1rem;
+
+        pre {
+            overflow-y: hidden;
+        }
     }
 
     .strong {
@@ -323,8 +347,17 @@ footer {
 }
 
 #helpModal {
+    p {
+        margin: .5rem 0;
+        line-height: 1.3em;
+    }
+
+    li {
+        line-height: 1.2em;
+    }
+
     ol {
-        margin-top: 1rem;
+        margin: .5rem 0;
         list-style-type: decimal;
         list-style-position: inside;
     }

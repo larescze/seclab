@@ -1,3 +1,5 @@
+from django.http import HttpResponseRedirect
+
 from .exploits import vulnscan, xss
 from django.shortcuts import render
 
@@ -5,7 +7,7 @@ from .forms import SearchForm
 
 
 def index(request):
-    title = "Seclab"
+    title = "Home"
     query = ""
     search_results = ""
     facets = []
@@ -41,15 +43,21 @@ def index(request):
 
 
 def exploits(request):
-    title = "Exploits"
-    response = ""
-    selected = ""
-    if request.method == 'POST':
-        if request.POST.get('select-xss'):
-            selected = "xss"
-        if request.POST.get('xss'):
-            selected = "xss"
-            url = request.POST['url']
-            attack_type = request.POST['attack_type']
-            response = xss.launch(url, attack_type)
-    return render(request, 'exploits.html', {'title': title, 'selected': selected, 'response': response})
+    if request.user.is_authenticated:
+        title = "Exploits"
+        response = ""
+        selected = ""
+        if request.method == 'POST':
+            if request.POST.get('select-xss'):
+                selected = "xss"
+            if request.POST.get('select-sqli'):
+                selected = "sqli"
+            if request.POST.get('xss'):
+                selected = "xss"
+                url = request.POST['url']
+                attack_type = request.POST['attack_type']
+                custom_code = request.POST['custom_code']
+                response = xss.launch(url, attack_type, custom_code)
+        return render(request, 'exploits.html', {'title': title, 'selected': selected, 'response': response})
+    else:
+        return HttpResponseRedirect('/admin/login/')
