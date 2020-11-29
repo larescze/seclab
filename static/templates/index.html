@@ -1,4 +1,42 @@
 {% extends 'includes/base.html' %} {% load static %} {% block content %}
+<div
+  class="modal fade"
+  id="helpModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="helpModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Help</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Results are obtained with the Shodan REST API.</p>
+        <p>Search process:</p>
+        <ol>
+          <li>Generate a random IPv4 address</li>
+          <li>Collect a real-time list of connected devices online</li>
+          <li>Query a supported port</li>
+          <li>Check the IPv4</li>
+          <li>Address on the port</li>
+          <li>Grab a service banner</li>
+          <li>Repeat</li>
+        </ol>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
 <div class="search-gif">
   <img src="{% static 'img/loading.gif' %}" alt="Searching" id="searchGif" />
 </div>

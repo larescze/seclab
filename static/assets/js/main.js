@@ -75,4 +75,13 @@ $(document).ready(function () {
       },
     });
   });
+
+  $("#attack_type").on("change", function () {
+    if (this.value == "custom") {
+      $("#custom_code").prop("readonly", false);
+    } else {
+      $("#custom_code").prop("readonly", true);
+      $("#custom_code").val();
+    }
+  });
 });
