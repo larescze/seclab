@@ -358,6 +358,10 @@ strong {
   margin-top: auto;
 }
 
+.summary .cve {
+  text-transform: uppercase;
+}
+
 .search-results {
   margin-bottom: 2rem;
   min-height: 128px;
