@@ -3,17 +3,12 @@ $(document).ready(function () {
     $("#searchIcon").replaceWith($("#searchGif"));
   });
 
-  $("#next").click(function () {
-    var page = parseInt($("#page").val()) + 1;
-    $("#page").val(page);
-    $("#searchForm").submit();
-  });
+  function sepNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  }
 
-  $("#previous").click(function () {
-    var page = parseInt($("#page").val()) - 1;
-    $("#page").val(page);
-    $("#searchForm").submit();
-  });
+  $("#total").text(sepNumber($("#total").text()));
+  $("#totalVuln").text(sepNumber($("#totalVuln").text()));
 
   $(".checked").each(function () {
     $(this).children(".form-check-input").prop("checked", true);
@@ -79,6 +74,7 @@ $(document).ready(function () {
   $("#attack_type").on("change", function () {
     if (this.value == "custom") {
       $("#custom_code").prop("readonly", false);
+      $("#custom_code").prop("required", true);
     } else {
       $("#custom_code").prop("readonly", true);
       $("#custom_code").val();
