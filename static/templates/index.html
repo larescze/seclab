@@ -156,6 +156,24 @@
       (<span class="text-danger"
         ><span id="totalVuln">{{results.vuln.total}}</span> vulnerable</span
       >)
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-striped bg-success"
+          role="progressbar"
+          style="width: {{results.total_not_vuln}}%"
+          aria-valuenow="{{results.total_not_vuln}}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+        <div
+          class="progress-bar progress-bar-striped bg-danger"
+          role="progressbar"
+          style="width: {{results.total_vuln}}%"
+          aria-valuenow="{{results.total_vuln}}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
     </div>
     {% if results.facets %}
     <div
@@ -254,7 +272,11 @@
     </div>
     {% else %}
     <div class="found">
-      Welcome to SecLab. Type something and explore the IoT!
+      Welcome to <span class="seclab">Seclab</span>. Type something and explore
+      IoT on the internet!
+      <div class="bg-iot">
+        <img src="{% static 'img/iot.png' %}" alt="IoT" />
+      </div>
     </div>
     {% endif %}
   </div>

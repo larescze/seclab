@@ -156,6 +156,10 @@ strong {
   font-weight: 600;
 }
 
+.seclab {
+  color: #008ace;
+}
+
 .btn-primary {
   background-color: #008ace;
   border-color: #008ace;
@@ -301,6 +305,21 @@ strong {
 .found {
   margin-top: 2rem;
   font-weight: 600;
+}
+
+.found .progress {
+  margin: 1rem 0 2rem 0;
+}
+
+.found .bg-iot {
+  margin-top: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.found .bg-iot img {
+  width: 100%;
+  max-width: 660px;
 }
 
 .results {
