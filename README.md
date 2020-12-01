@@ -18,23 +18,6 @@ bpc-akr-python
 ├── manage.py               # Command-line utility for administrative tasks
 └── requirements.txt        # File with all dependencies
 </pre>
-<ul>
-<li>app/ - web app backend
-<ul>
-<li>exploits/ - all exploit scripts</li>
-<li>migrations/ - migration system</li>
-</ul>
-</li>
-<li>seclab/ - web app settings and routing</li>
-<li>static/ - web app frontend
-<ul>
-<li>assets/ - css, images, javascript</li>
-<li>templates/ - view templates</li>
-</ul>
-</li>
-<li>requirements.txt - all dependencies</li>
-<li>manage.py - command-line utility for administrative tasks</li>
-</ul>
 
 <h2>Requirements</h2>
 <ul>
