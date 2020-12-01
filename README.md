@@ -61,7 +61,7 @@ Apache version 2.4.43 (vulnerable): <code>http://apache2.willilazarov.cz</code>.
 Apache version 2.4.43 (secure): <code>https://apache3.willilazarov.cz</code>.
 </p>
 <p>4. Launch attack and wait for results.</p>
-<p>⚠ WARNING: Use all exploits only for educational purposes!</p>
+<p><strong>:warning: WARNING: Use all exploits only for educational purposes!</strong></p>
 
 <h2>About searching and exploits</h2>
 
