@@ -4,7 +4,7 @@
 
 <h2>Project structure</h2>
 <pre>
-.
+bpc-akr-python
 ├── app                     # Web app backend
 │   ├── exploits            # Exploit files (dos, ddtrav, sqli, vulnscan, xss)
 │   ├── migrations          # Migration system 
