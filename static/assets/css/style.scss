@@ -385,3 +385,13 @@ footer {
         list-style-position: inside;
     }
 }
+
+#log {
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        line-height: 1.45em;
+    }
+}

@@ -549,4 +549,12 @@ footer {
   list-style-type: decimal;
   list-style-position: inside;
 }
+
+#log ul {
+  list-style-type: none;
+}
+
+#log li {
+  line-height: 1.45em;
+}
 /*# sourceMappingURL=style.css.map */
