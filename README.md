@@ -53,8 +53,15 @@
 <li>Password: <strong>bpc-akr-2020</strong></li>
 </ul>
 <p>2. Move to <em>Exploits</em> page</p>
-<p>3. Select exploit, read description and launch attack</p>
-<p>⚠ WARNING: Use all exploits educational purposes only!</p>
+<p>3. Select exploit, read description and fill out input fiels.</p>
+<p>Note: We recommend to use live website demo from this <a href="https://github.com/larescze/bpc-akr-web">repository</a>:</p>
+<p>
+Apache version 2.2.34 (vulnerable): <code>http://apache1.willilazarov.cz</code>.<br>
+Apache version 2.4.43 (vulnerable): <code>http://apache2.willilazarov.cz</code>.<br>
+Apache version 2.4.43 (secure): <code>https://apache3.willilazarov.cz</code>.
+</p>
+<p>4. Launch attack and wait for results.</p>
+<p>⚠ WARNING: Use all exploits only for educational purposes!</p>
 
 <h2>About searching and exploits</h2>
 
