@@ -3,6 +3,21 @@
 <p>Main goal of this project is vulnerability visualization, especially for Apache servers and demonstration of some specific exploits.</p>
 
 <h2>Project structure</h2>
+<pre>
+.
+├── app                     # Web app backend
+│   ├── exploits            # Exploit files (dos, ddtrav, sqli, vulnscan, xss)
+│   ├── migrations          # Migration system 
+├── seclab                  # Web app settings and routing
+├── static                  # Web app frontend
+│   ├── assets              # CSS, JavaScript, images
+│   ├── templates           # View templates
+├── README.md               # Readme file
+├── __init__.py             # Python convention (package)
+├── db.sqlite3              # Local database
+├── manage.py               # Command-line utility for administrative tasks
+└── requirements.txt        # File with all dependencies
+</pre>
 <ul>
 <li>app/ - web app backend
 <ul>
