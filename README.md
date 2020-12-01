@@ -7,11 +7,11 @@
 bpc-akr-python
 ├── app                     # Web app backend
 │   ├── exploits            # Exploit files (dos, ddtrav, sqli, vulnscan, xss)
-│   ├── migrations          # Migration system 
+│   └── migrations          # Migration system 
 ├── seclab                  # Web app settings and routing
 ├── static                  # Web app frontend
 │   ├── assets              # CSS, JavaScript, images
-│   ├── templates           # View templates
+│   └── templates           # View templates
 ├── README.md               # Readme file
 ├── __init__.py             # Python convention (package)
 ├── db.sqlite3              # Local database
