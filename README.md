@@ -42,7 +42,7 @@ bpc-akr-python
 <p>2. Select summary filters, chart and results display limit (optional).</p>
 <p>3. Click on <code>🔍</code> or press ENTER.</p>
 <p>4. Explore search results, TOP 5 charts.</p>
-<p>Note: If vulnerabilities summary was selected, you can visit TOP 5 CVEs details on <a href="https://nvd.nist.gov/">NIST</a> (National Institute of Standards and Technology). By clicking on host IP, you will be redirected to <a href="https://www.shodan.io/">shodan.io</a> for more details.</p>
+<p>Note: If vulnerabilities summary was selected, you can visit TOP 5 CVEs details on <a href="https://nvd.nist.gov/">NIST</a> (National Institute of Standards and Technology). By clicking on the host IP, you will be redirected to <a href="https://www.shodan.io/">shodan.io</a> for more details.</p>
 
 <h3>Exploits</h3>
 <p>1. Login to access <em>Exploits</em> page:</p>
@@ -50,7 +50,7 @@ bpc-akr-python
 <li>Username: <strong>xguest20</strong></li>
 <li>Password: <strong>bpc-akr-2020</strong></li>
 </ul>
-<p>2. Move to <em>Exploits</em> page</p>
+<p>2. Move to <em>Exploits</em> page.</p>
 <p>3. Select exploit, read description and fill out input fiels.</p>
 <p>Note: We recommend to use live website demo from this <a href="https://github.com/larescze/bpc-akr-web">repository</a>:</p>
 <p>
