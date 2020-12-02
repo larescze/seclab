@@ -108,6 +108,12 @@
           <div class="form-group">
             <select class="form-control chart-select" name="chart" id="chart">
               <option
+                value="doughnut"
+                class="opt {% if chart == 'doughnut' %}selected{% endif %}"
+              >
+                Doughnut
+              </option>
+              <option
                 value="bar"
                 class="opt {% if chart == 'bar' %}selected{% endif %}"
               >
@@ -118,12 +124,6 @@
                 class="opt {% if chart == 'pie' %}selected{% endif %}"
               >
                 Pie
-              </option>
-              <option
-                value="doughnut"
-                class="opt {% if chart == 'doughnut' %}selected{% endif %}"
-              >
-                Doughnut
               </option>
             </select>
           </div>
