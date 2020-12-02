@@ -74,6 +74,9 @@ def exploits(request):
             # DoS exploit is selected
             elif request.POST.get('select-dos'):
                 selected = "dos"
+            # Directory & Dictionary Traversal is selected
+            elif request.POST.get('select-ddt'):
+                selected = "ddt"
             # Cross-site scripting exploit is launched
             elif request.POST.get('xss'):
                 selected = "xss"
@@ -105,6 +108,14 @@ def exploits(request):
                 custom_code = request.POST['custom_code']
                 # Launch SQLi and wait for result
                 response = sqli.launch(url, attack_type, custom_code)
+                # SQL Injection exploit is launched
+            elif request.POST.get('ddt'):
+                selected = "ddt"
+                url = request.POST['url']
+                attack_type = request.POST['attack_type']
+                custom_file = request.POST['custom_code']
+                # Launch D&D Traversal and wait for result
+                response = ddtrav.launch(url, attack_type, custom_file)
         # Return rendered page with data
         return render(request, 'exploits.html', {'title': title, 'selected': selected, 'response': response})
     else:
