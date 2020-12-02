@@ -471,6 +471,10 @@ strong {
   padding: 2rem 0;
 }
 
+.exploit-form button {
+  height: 38px;
+}
+
 .response {
   margin-top: 1rem;
   padding: 2rem;
@@ -548,5 +552,13 @@ footer {
   margin: .5rem 0;
   list-style-type: decimal;
   list-style-position: inside;
+}
+
+#log ul {
+  list-style-type: none;
+}
+
+#log li {
+  line-height: 1.45em;
 }
 /*# sourceMappingURL=style.css.map */
