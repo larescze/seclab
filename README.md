@@ -1,5 +1,5 @@
-<h1>BPC-AKR: Web security vulnerabilities</h1>
-<p>Website application for searching devices on the internet with vulnerability summarization and exploits demonstration.</p>
+<h1>VUT BPC-AKR Project: Seclab (Security Laboratory)</h1>
+<p>Seclab is website application for searching devices on the internet with vulnerability summarization and exploits demonstration.</p>
 <p>Main goal of this project is vulnerability visualization, especially for Apache servers and demonstration of some specific exploits.</p>
 
 <h2>Project structure</h2>
