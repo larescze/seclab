@@ -101,7 +101,7 @@ strong {
     }
 }
 
-#searchBtn {
+.search-btn {
     padding: 0 1.1rem;
     background-color: $willi;
     color: $white;
@@ -237,6 +237,10 @@ strong {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
+
+    @media (max-width: $lg) {
+        grid-template-columns: auto;
+    }
 }
 
 .exploits-grid-item {
@@ -304,8 +308,21 @@ strong {
 .exploit-form {
     padding: 2rem 0;
 
-    button {
+    .launch {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 76.48px;
         height: 38px;
+
+        @media (max-width: $sm) {
+            width: 100%;
+        }
+
+        &:hover {
+            background-color: $willi !important;
+            color: $white !important;
+        }
     }
 }
 

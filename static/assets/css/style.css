@@ -238,7 +238,7 @@ strong {
           box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
 }
 
-#searchBtn {
+.search-btn {
   padding: 0 1.1rem;
   background-color: #008ace;
   color: #ffff;
@@ -395,6 +395,13 @@ strong {
   gap: 4rem;
 }
 
+@media (max-width: 1200px) {
+  .exploits-grid {
+    -ms-grid-columns: auto;
+        grid-template-columns: auto;
+  }
+}
+
 .exploits-grid-item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -471,8 +478,29 @@ strong {
   padding: 2rem 0;
 }
 
-.exploit-form button {
+.exploit-form .launch {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 76.48px;
   height: 38px;
+}
+
+@media (max-width: 576px) {
+  .exploit-form .launch {
+    width: 100%;
+  }
+}
+
+.exploit-form .launch:hover {
+  background-color: #008ace !important;
+  color: #ffff !important;
 }
 
 .response {

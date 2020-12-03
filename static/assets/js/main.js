@@ -1,6 +1,14 @@
 $(document).ready(function () {
   $("#launch").click(function () {
-    $("#searchIcon").replaceWith($("#searchGif"));
+    let valid = true;
+    $("[required]").each(function () {
+      if ($(this).is(":invalid") || !$(this).val()) {
+        valid = false;
+      }
+    });
+    if (valid) {
+      $("#searchIcon").replaceWith($("#searchGif"));
+    }
   });
 
   function sepNumber(num) {
