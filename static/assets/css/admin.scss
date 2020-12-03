@@ -1,0 +1,85 @@
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+#header {
+    font-family: 'Asap', sans-serif;
+    background-color: #f8f9fa;
+    color: rgba(0, 0, 0, .5);
+
+    * {
+        border: 0;
+    }
+
+    a:link,
+    a:visited {
+        font-weight: 600;
+        color: rgba(0, 0, 0, .5);
+        font-size: 14px;
+    }
+
+}
+
+#user-tools {
+    font-size: 14px;
+    font-weight: 600;
+
+    a {
+        font-weight: 600;
+
+        &:hover {
+            color: rgba(0, 0, 0, .9);
+            border: 0;
+        }
+    }
+}
+
+.heading {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #008ace;
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 1.5em;
+}
+
+#changelist-filter h2,
+.breadcrumbs,
+.module caption,
+.selector-chosen h2,
+.button,
+.module h2,
+input[type=submit],
+button {
+    background-color: #008ace !important;
+    outline: 0 !important;
+}
+
+input[type=submit],
+.button,
+.module h2 {
+    color: #ffff !important;
+}
+
+.toggle-nav-sidebar {
+    color: #ffff;
+    border: 0;
+}
+
+.module caption {
+    padding-left: 8px !important;
+}
+
+#searchbar {
+    height: 28px !important;
+}
+
+#changelist .actions label {
+    vertical-align: baseline !important;
+}
+
+.deletelink {
+    height: auto !important;
+}

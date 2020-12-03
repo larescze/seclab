@@ -1,0 +1,284 @@
+{% extends 'includes/base.html' %} {% load static %} {% block content %}
+<div
+  class="modal fade"
+  id="helpModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="helpModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Help</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Results are obtained with the Shodan REST API.</p>
+        <p>Search process:</p>
+        <ol>
+          <li>Generate a random IPv4 address</li>
+          <li>Collect a real-time list of connected devices online</li>
+          <li>Query a supported port</li>
+          <li>Check the IPv4</li>
+          <li>Address on the port</li>
+          <li>Grab a service banner</li>
+          <li>Repeat</li>
+        </ol>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+<div class="search-gif">
+  <img src="{% static 'img/loading.gif' %}" alt="Searching" id="searchGif" />
+</div>
+<div class="search">
+  <div class="container">
+    <form action="/" method="post" id="searchForm">
+      {% csrf_token %}
+      <div class="input-group search-input">
+        {{ form.query }}
+        <div class="input-group-append">
+          <button class="input-group-text search-btn" type="submit" id="launch">
+            <i class="fas fa-search" id="searchIcon"></i>
+          </button>
+        </div>
+      </div>
+      <input type="hidden" name="page" id="page" value="{{page}}" />
+      <div class="filter">
+        <div class="flex-item">
+          <strong>Summary filter:</strong>
+          <div class="form-group checkboxes">
+            <div class="form-check {% if 'port' in facets %}checked{% endif %}">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="port"
+                value="port"
+              />
+              <label class="form-check-label" for="port">Port</label>
+            </div>
+            <div class="form-check {% if 'vuln' in facets %}checked{% endif %}">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="vuln"
+                value="vuln"
+              />
+              <label class="form-check-label" for="vuln">Vulnerabilities</label>
+            </div>
+            <div
+              class="form-check {% if 'product' in facets %}checked{% endif %}"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="product"
+                value="product"
+              />
+              <label class="form-check-label" for="product">Product</label>
+            </div>
+            <div
+              class="form-check {% if 'country' in facets %}checked{% endif %}"
+            >
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="facet"
+                id="country"
+                value="country"
+              />
+              <label class="form-check-label" for="country">Country</label>
+            </div>
+          </div>
+        </div>
+        <div class="flex-item">
+          <strong>Chart settings:</strong>
+          <div class="form-group">
+            <select class="form-control chart-select" name="chart" id="chart">
+              <option
+                value="doughnut"
+                class="opt {% if chart == 'doughnut' %}selected{% endif %}"
+              >
+                Doughnut
+              </option>
+              <option
+                value="bar"
+                class="opt {% if chart == 'bar' %}selected{% endif %}"
+              >
+                Bar (default)
+              </option>
+              <option
+                value="pie"
+                class="opt {% if chart == 'pie' %}selected{% endif %}"
+              >
+                Pie
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="flex-item">
+          <strong>Results per page:</strong>
+          <div class="form-group">
+            <input
+              class="form-control results-limit"
+              type="number"
+              name="limit"
+              id="limit"
+              min="1"
+              max="100"
+              placeholder="18 (default)"
+              value="{% if limit > 0 %}{{limit_val}}{% endif %}"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="search-results">
+  <div class="container">
+    {% if results.total > 0 %}
+    <div class="found">
+      Results found:
+      <span id="total">{{results.total}}</span>
+      (<span class="text-danger"
+        ><span id="totalVuln">{{results.vuln.total}}</span> vulnerable</span
+      >)
+      <div class="progress">
+        <div
+          class="progress-bar progress-bar-striped bg-success"
+          role="progressbar"
+          style="width: {{results.total_not_vuln}}%"
+          aria-valuenow="{{results.total_not_vuln}}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+        <div
+          class="progress-bar progress-bar-striped bg-danger"
+          role="progressbar"
+          style="width: {{results.total_vuln}}%"
+          aria-valuenow="{{results.total_vuln}}"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        ></div>
+      </div>
+    </div>
+    {% if results.facets %}
+    <div
+      class="modal fade"
+      id="chartModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="chart}Modal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="chartTitle"></h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <span class="d-none" id="chartType">{{chart}}</span>
+            <canvas id="summaryChart"></canvas>
+          </div>
+          <div class="modal-footer">Data source: Shodan</div>
+        </div>
+      </div>
+    </div>
+    <div class="results summary">
+      {% for key,value in results.facets.items %}
+      <div class="result-item">
+        {% if key == 'vuln' %}
+        <ul class="chart-data">
+          <li class="host">TOP 5 - vulnerabilities</li>
+          {% for summary in value %}
+          <li>
+            <a
+              href="https://nvd.nist.gov/vuln/detail/{{summary.value|upper}}"
+              target="_blank"
+              rel="noreferrer"
+              class="chart-label cve"
+            >
+              {{summary.value}}</a
+            >:
+            <span class="chart-value">{{summary.count}}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <ul class="chart-data">
+          <li class="host">TOP 5 - {{key}}</li>
+          {% for summary in value %}
+          <li>
+            <span class="chart-label">{{summary.value}}</span>:
+            <span class="chart-value">{{summary.count}}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        <button
+          type="button"
+          class="btn btn-primary btn-chart"
+          data-toggle="modal"
+          data-target="#chartModal"
+        >
+          View chart
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="found">Top results:</div>
+    <div class="results mb-5">
+      {% for result in results.matches %}
+      <div class="result-item">
+        <ul>
+          <li class="host">
+            <a
+              href="https://www.shodan.io/host/{{result.ip_str}}"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {{result.ip_str}}
+            </a>
+          </li>
+          <li>Port: {{result.port}}</li>
+          <li>ISP: {{result.isp}}</li>
+          <li>Country: {{result.location.country_name}}</li>
+          <li>Location: {{result.location.city}}</li>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="found">
+      Welcome to <span class="seclab">Seclab</span>. Type something and explore
+      IoT on the internet!
+      <div class="bg-iot">
+        <img src="{% static 'img/iot.png' %}" alt="IoT" />
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
