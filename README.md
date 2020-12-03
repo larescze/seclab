@@ -19,12 +19,14 @@ bpc-akr-python
 └── requirements.txt        # File with all dependencies
 </pre>
 
-<h2>Requirements</h2>
+<h2>Dependencies</h2>
 <ul>
+<li>bs4</li>
+<li>dj-database-url</li>
+<li>Django</li>
 <li>requests</li>
 <li>shodan</li>
-<li>Django</li>
-<li>beautifulsoup4</li>
+<li>urllib3</li>
 </ul>
 
 <h2>Installation</h2>
