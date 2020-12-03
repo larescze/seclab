@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from .exploits import vulnscan, xss, dos, sqli
+from .exploits import vulnscan, xss, dos, sqli, ddtrav
 from django.shortcuts import render
 from .forms import SearchForm
 
