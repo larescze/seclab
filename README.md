@@ -34,7 +34,7 @@ bpc-akr-python
 <pre>git clone https://github.com/larescze/bpc-akr-python.git</pre>
 <p>2. Install all required libraries from root directory:</p>
 <pre>pip install -r requirements.txt</pre>
-<p>3. Fill Shodan REST API key into constant API_KEY in [./app/exploits/vulnscan.py](app/exploits/vulnscan.py):</p>
+<p>3. Fill Shodan REST API key into constant API_KEY in [a relative link](app/exploits/vulnscan.py):</p>
 <pre>
 # Shodan Rest API key
 API_KEY = ""
