@@ -34,9 +34,14 @@ bpc-akr-python
 <pre>git clone https://github.com/larescze/bpc-akr-python.git</pre>
 <p>2. Install all required libraries from root directory:</p>
 <pre>pip install -r requirements.txt</pre>
-<p>3. Run development server:</p>
+<p>3. Fill Shodan REST API key into constant API_KEY in [./app/exploits/vulnscan.py](app/exploits/vulnscan.py):</p>
+<pre>
+# Shodan Rest API key
+API_KEY = ""
+</pre>
+<p>4. Run development server:</p>
 <pre>python manage.py runserver</pre>
-<p>4. Server should be running on http://127.0.0.1:8000/ (default).</p>
+<p>5. Server should be running on http://127.0.0.1:8000/ (default).</p>
 
 <h2>How to use</h2>
 <h3>Searching</h3>
