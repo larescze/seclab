@@ -33,14 +33,14 @@ bpc-akr-python
 <p>1. Clone repository:</p>
 <pre>git clone https://github.com/larescze/bpc-akr-seclab.git</pre>
 <p>2. Install all required libraries from root directory:</p>
-<pre>pip install -r requirements.txt</pre>
+<pre>pip3 install -r requirements.txt</pre>
 <p>3. Fill Shodan REST API key into constant <em>API_KEY</em> in <a href="app/exploits/vulnscan.py">./app/exploits/vulnscan.py</a>:</p>
 <pre>
 # Shodan Rest API key
 API_KEY = ""
 </pre>
 <p>4. Run development server:</p>
-<pre>python manage.py runserver</pre>
+<pre>python3 manage.py runserver</pre>
 <p>5. Server should be running on http://127.0.0.1:8000/.</p>
 
 <h2>How to use</h2>
