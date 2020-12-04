@@ -149,7 +149,9 @@
 </div>
 <div class="search-results">
   <div class="container">
-    {% if results.total > 0 %}
+    {% if results.error %}
+    <div class="found text-danger">{{results.error}}</div>
+    {% elif results.total > 0 %}
     <div class="found">
       Results found:
       <span id="total">{{results.total}}</span>
