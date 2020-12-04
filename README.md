@@ -34,7 +34,7 @@ bpc-akr-python
 <pre>git clone https://github.com/larescze/bpc-akr-python.git</pre>
 <p>2. Install all required libraries from root directory:</p>
 <pre>pip install -r requirements.txt</pre>
-<p>3. Fill Shodan REST API key into constant API_KEY in <a href="app/exploits/vulnscan.py">./app/exploits/vulnscan.py)</a>:</p>
+<p>3. Fill Shodan REST API key into constant <em>API_KEY</em> in <a href="app/exploits/vulnscan.py">./app/exploits/vulnscan.py</a>:</p>
 <pre>
 # Shodan Rest API key
 API_KEY = ""
@@ -47,8 +47,8 @@ API_KEY = ""
 <h3>Searching</h3>
 <p>1. Enter some keyword. For example <code>apache</code>.</p>
 <p>2. Select summary filters, chart and results display limit (optional).</p>
-<p>3. Click on <code>🔍</code> or press ENTER.</p>
-<p>4. Explore search results, TOP 5 charts.</p>
+<p>3. Click on 🔍 or press ENTER.</p>
+<p>4. Explore search results and TOP 5 summarization.</p>
 <p>Note: If vulnerabilities summary was selected, you can visit TOP 5 CVEs details on <a href="https://nvd.nist.gov/">NIST</a> (National Institute of Standards and Technology). By clicking on the host IP, you will be redirected to <a href="https://www.shodan.io/">shodan.io</a> for more details.</p>
 
 <h3>Exploits</h3>
@@ -59,12 +59,13 @@ API_KEY = ""
 </ul>
 <p>2. Move to <em>Exploits</em> page.</p>
 <p>3. Select exploit, read description and fill out input fiels.</p>
-<p>Note: We recommend to use live website demo from this <a href="https://github.com/larescze/bpc-akr-web">repository</a>:</p>
-<p>
-Apache version 2.2.34 (vulnerable): <code>http://apache1.willilazarov.cz</code>.<br>
-Apache version 2.4.43 (vulnerable): <code>http://apache2.willilazarov.cz</code>.<br>
-Apache version 2.4.43 (secure): <code>https://apache3.willilazarov.cz</code>.
-</p>
+<p>Note: We recommend to use one of the live website demos from this <a href="https://github.com/larescze/bpc-akr-web">repository</a>:</p>
+<p>Apache version 2.2.34 (vulnerable):</p>
+<pre>http://apache1.willilazarov.cz</pre>
+<p>Apache version 2.4.43 (vulnerable):</p>
+<pre>http://apache2.willilazarov.cz</pre>
+<p>Apache version 2.4.43 (secure):</p>
+<pre>https://apache3.willilazarov.cz</pre>
 <p>4. Launch attack and wait for results.</p>
 <p><strong>:warning: WARNING: Use all exploits only for educational purposes!</strong></p>
 
@@ -74,14 +75,15 @@ Apache version 2.4.43 (secure): <code>https://apache3.willilazarov.cz</code>.
 <p>Shodan is search engine for Internet-connected devices (webcams, routers, servers, etc.). Shodan provides banners which are information about device (IP address, software, version, server, serial number, location, vulnerabilities, etc.) through the REST API.</p>
 <h4>REST API</h4>
 <p>The REST API provides methods to search Shodan, look up hosts, get summary information on queries, get information about number of results, narrow search results by filters, search for devices with default passwords, look up devices vulnerable to certain exploits or get port numbers that the crawlers are looking for.</p>
+<p>This project uses REST API so you can search through the Shodan database and select some summarization filters with chart visualization.</p>
 <h3>Exploits</h3>
 
 <h4>Directory Traversal</h4>
 <p>Directory traversal is a type of HTTP exploit that allows attackers to gain unauthorized access to restricted directories and files outside of root directory. An attacker may manipulate a URL with special characters “../” to bypass security filters.</p>
 
 <h4>DoS</h4>
-<p>Denial of service (DoS) is an attack targeting the availability of web applications. Rather than to steal information the goal of a DoS attack is to slow down or take down a website. A DoS attack exhaust computing resources of a target by generating high or slow rate traffic. Constant flooding of targeted network with traffic prevents legitimate users from accessing the website. </p>
-<p>This attack floods the HTTP or HTTPS ports with get requests or floods the website forms with random data. </p>
+<p>Denial of service (DoS) is an attack targeting the availability of web applications. Rather than to steal information the goal of a DoS attack is to slow down or bring down machine's web server. A DoS attack exhaust computing resources of a target by generating high or slow rate traffic. Constant flooding of targeted network with traffic prevents legitimate users from accessing the website. </p>
+<p>This attack periodically floods the HTTP or HTTPS ports with HTTP headers (GET requests). Targeted server will keep accomplished connections open, filling their maximum concurrent connection pool and denying connection attempts from another clients.</p>
 
 <h4>SQL Injection</h4>
 <p>SQL injection is code injection attack, in which part of SQL statement is inserted into an entry field in an application connected to database. If application is vulnerable to this exploit the SQL statement is executed. SQL statement can allow access to sensitive data form the database, modify the database data or delete the whole table.</p>
@@ -89,4 +91,4 @@ Apache version 2.4.43 (secure): <code>https://apache3.willilazarov.cz</code>.
 
 <h4>XSS</h4>
 <p>Cross-Site Scripting is code injection attack, in which malicious code (usually JavaScript) is inserted into source code of a website by user input. The attack occurs when the victim opens the website which executes the malicious code. A website is vulnerable to XSS attack if it uses unsanitized user input in the output that it generates e.g comment fields.</p>
-<p>This attack uses JavaScript code which is inserted into website forms coded in HTML language.</p>
+<p>This attack uses JavaScript code which is injected into website through HTML forms.</p>
