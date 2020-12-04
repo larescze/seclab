@@ -31,7 +31,7 @@ bpc-akr-python
 
 <h2>Installation</h2>
 <p>1. Clone repository:</p>
-<pre>git clone https://github.com/larescze/bpc-akr-python.git</pre>
+<pre>git clone https://github.com/larescze/bpc-akr-seclab.git</pre>
 <p>2. Install all required libraries from root directory:</p>
 <pre>pip install -r requirements.txt</pre>
 <p>3. Fill Shodan REST API key into constant <em>API_KEY</em> in <a href="app/exploits/vulnscan.py">./app/exploits/vulnscan.py</a>:</p>
@@ -78,18 +78,18 @@ API_KEY = ""
 <p>This project uses REST API so you can search through the Shodan database and select some summarization filters with chart visualization.</p>
 <h3>Exploits</h3>
 
-<h4>Directory Traversal</h4>
+<h4>Directory & Dictionary Traversal (D&D Traversal)</h4>
 <p>Directory traversal is a type of HTTP exploit that allows attackers to gain unauthorized access to restricted directories and files outside of root directory. An attacker may manipulate a URL with special characters “../” to bypass security filters.</p>
-<p>This attack searches for file paths by testing all combinations of path components and evaluating acquired content.</p>
+<p>D&D Traversal searches for file paths by testing all combinations of path components and evaluating acquired content.</p>
 
-<h4>DoS</h4>
+<h4>Denial of service (DoS)</h4>
 <p>Denial of service (DoS) is an attack targeting the availability of web applications. Rather than to steal information the goal of a DoS attack is to slow down or bring down machine's web server. A DoS attack exhaust computing resources of a target by generating high or slow rate traffic. Constant flooding of targeted network with traffic prevents legitimate users from accessing the website. </p>
-<p>This attack periodically floods the HTTP or HTTPS ports with HTTP headers (GET requests). Targeted server will keep accomplished connections open, filling their maximum concurrent connection pool and denying connection attempts from another clients.</p>
+<p>Seclab DoS attack periodically floods the HTTP or HTTPS ports with HTTP headers (GET requests). Targeted server will keep accomplished connections open, filling their maximum concurrent connection pool and denying connection attempts from another clients.</p>
 
-<h4>SQL Injection</h4>
+<h4>SQL Injection (SQLi)</h4>
 <p>SQL injection is code injection attack, in which part of SQL statement is inserted into an entry field in an application connected to database. If application is vulnerable to this exploit the SQL statement is executed. SQL statement can allow access to sensitive data form the database, modify the database data or delete the whole table.</p>
-<p>This attack injects string with partial SQL statement into a website form with password input field.</p>
+<p>Project's SQLi enters short string into a login form and if statement is executed, attacker gets logged in as first user in database table.</p>
 
 <h4>XSS</h4>
 <p>Cross-Site Scripting is code injection attack, in which malicious code (usually JavaScript) is inserted into source code of a website by user input. The attack occurs when the victim opens the website which executes the malicious code. A website is vulnerable to XSS attack if it uses unsanitized user input in the output that it generates e.g comment fields.</p>
-<p>This attack uses JavaScript code which is injected into website through HTML forms.</p>
+<p>XSS in this project uses JavaScript code which is injected into website through HTML forms.</p>
