@@ -11,6 +11,16 @@ $(document).ready(function () {
     }
   });
 
+  $("#attack_type").on("change", function () {
+    if (this.value == "custom") {
+      $("#custom_code").prop("readonly", false);
+      $("#custom_code").prop("required", true);
+    } else {
+      $("#custom_code").prop("readonly", true);
+      $("#custom_code").val();
+    }
+  });
+
   function sepNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
   }
@@ -77,15 +87,5 @@ $(document).ready(function () {
         },
       },
     });
-  });
-
-  $("#attack_type").on("change", function () {
-    if (this.value == "custom") {
-      $("#custom_code").prop("readonly", false);
-      $("#custom_code").prop("required", true);
-    } else {
-      $("#custom_code").prop("readonly", true);
-      $("#custom_code").val();
-    }
   });
 });
