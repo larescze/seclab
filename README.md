@@ -62,8 +62,6 @@ API_KEY = ""
 <p>Note: We recommend to use one of the live website demos from this <a href="https://github.com/larescze/bpc-akr-web">repository</a>:</p>
 <p>Apache version 2.2.34 (vulnerable):</p>
 <pre>http://apache1.willilazarov.cz</pre>
-<p>Apache version 2.4.43 (vulnerable):</p>
-<pre>http://apache2.willilazarov.cz</pre>
 <p>Apache version 2.4.43 (secure):</p>
 <pre>https://apache3.willilazarov.cz</pre>
 <p>4. Launch attack and wait for results.</p>
